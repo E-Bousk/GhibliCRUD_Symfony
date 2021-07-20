@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+
+{% block title anim.title %}
+
+{% block body %}
+	<div class="jumbotron">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+            </div>
+				<div class="col-md-4">
+					<h1 class="text-center">{{ anim.title }}</h1>
+					<h2>{{ anim.kanjiTitle }}<br>{{anim.japTitle }}</h2>
+					<div class="text-primary" style="font-size: 4rem; font-weight: bold;">{{anim.year}}</div>
+					<a href="" class="btn btn-primary">Contactez toto</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container mt-4">
+
+		<p>
+			{{ anim.kanjiTitle | nl2br }}
+		</p>
+		<div class="row">
+			<div class="col-md-8">
+				<h2>Caractéristiques</h2>
+				<table class="table table-striped">
+					<tr>
+						<td>surface habitable</td>
+						<td>{{ anim.title }}</td>
+					</tr>
+					<tr>
+						<td>Pièces</td>
+						<td>{{ anim.title }}</td>
+					</tr>
+					<tr>
+						<td>Nbre chambre</td>
+						<td>{{ anim.title }}</td>
+					</tr>
+					<tr>
+						<td>Étage</td>
+						<td>{{ anim.title }}</td>
+					</tr>
+					<tr>
+						<td>Realisteur</td>
+						<td>{{ anim.DirectorSelect }}</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-md-4">
+				<h2>Spécificités</h2>
+			</div>
+		</div>
+	</div>
+{% endblock %}
