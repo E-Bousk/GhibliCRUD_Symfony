@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\AnimRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\String\Slugger\AsciiSlugger;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * @ORM\Entity(repositoryClass=AnimRepository::class)
+ * @UniqueEntity("title")
+ * @ORM\Entity(repositoryClass="App\Repository\AnimRepository")
  */
 class Anim
 {
@@ -28,6 +29,8 @@ class Anim
     private $id;
 
     /**
+     * @Assert\NotNull(message = "Le titre doit être renseigné")
+     * @Assert\Length(min=15, max=255, minMessage = "Le titre doit avoir au moins {{ limit }} caractères",)
      * @ORM\Column(type="string", length=255)
      */
     private $title;
@@ -44,6 +47,7 @@ class Anim
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotNull(message = "L'année doit être renseignée")
      * @Assert\Range(
      *      min = 1986,
      *      minMessage = "Le tout premier animé est sorti en {{ limit }}",
