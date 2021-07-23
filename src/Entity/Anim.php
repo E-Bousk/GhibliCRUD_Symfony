@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AnimRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\String\Slugger\AsciiSlugger;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AnimRepository::class)
@@ -14,7 +15,8 @@ class Anim
 
     const DIRECTOR = [
         1 => 'Hayao Miyazaki',
-        2 => 'Isao Takahata'
+        2 => 'Isao Takahata',
+        3 => 'Tomomi Mochizuki'
     ];
 
 
@@ -42,6 +44,10 @@ class Anim
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = 1986,
+     *      minMessage = "Le tout premier animé est sorti en {{ limit }}",
+     * )
      */
     private $year;
 

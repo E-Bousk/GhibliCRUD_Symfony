@@ -15,6 +15,7 @@ class AnimController extends AbstractController
      * @var AnimRepository
      */
     private $repository;
+    
     public function __construct(AnimRepository $repository, EntityManagerInterface $em)
     {
         $this->repository= $repository;

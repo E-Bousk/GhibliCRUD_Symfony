@@ -1,14 +1,14 @@
 {% extends "base.html.twig" %}
     
-{% block title 'toto' %}
+{% block title 'Animé GHIBLI' %}
 
 {% block body %}
 <div class="jumbotron text-center">
-<h1>Agence Lorem Ipsum</h1>
+<h1>Les animés GHIBLIS</h1>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nulla laboriosam iste minus fuga asperiores non omnis tenetur ea a, quasi maiores maxime eaque rem aspernatur. Quia eius dignissimos esse.</p>
 </div>
 <div class="container">
-    <h2>les derniers animes</h2>
+    <h2>les derniers animés</h2>
     <div class="row flex">
         {% for anim in anims %}
             <div class="col-3">
@@ -18,17 +18,13 @@
                             <a href="{{ path('anim.show', {id: anim.id, slug: anim.slug}) }}">{{ anim.title }}</a>
                         </h5>
                         <p class="card-text">
-                            {{ anim.kanjiTitle }} ({{ anim.japTitle }})
+                            {{ anim.kanjiTitle }} <br> ({{ anim.japTitle }})
                         </p>
-                        <div class="text-primary" style="font-weight: bold;font-size:2rem;"> {{ anim.FormattedYear }}</div>
+                        <div class="text-primary" style="font-weight: bold;font-size:2rem;">{{ anim.FormattedYear }}</div>
                     </div>           
                 </div>
             </div>
         {% endfor %}
     </div>
-
-
 </div>
-
-
 {% endblock %}

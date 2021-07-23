@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+    
+{% block title 'Gestion des animés GHIBLI' %}
+
+{% block body %}
+	<div class="container mt-4">
+		<h1>Gérer les animés</h1>
+
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Titres</th>
+					<th>Réalisateur</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for anim in anims %}
+					<tr>
+						<td>{{ anim.title }}</td>
+						<td>{{ anim.director }}</td>						
+						<td>
+							<a href="{{ path ('admin.anim.edit', { id: anim.id}) }}" class="btn btn-secondary">Éditer</a>
+							<form method="post" action="{{ path('admin.anim.delete', {id: anim.id}) }}" onsubmit="return confirm('Êtes-vous sûr ?')" style="display: inline-block">
+								<input type="hidden" name="_method" value="DELETE">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ anim.id) }}">
+								<button type="submit" class="btn btn-danger">Supprimer</button>
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<div class="text-right">
+			<a href="{{ path('admin.anim.new') }}" class="btn btn-primary">Ajouter un nouvel animé</a>
+		</div>
+	</div>
+{% endblock %}

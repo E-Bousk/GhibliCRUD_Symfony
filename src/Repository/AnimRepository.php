@@ -45,7 +45,7 @@ class AnimRepository extends ServiceEntityRepository
     private function findYearQuery()// : QueryBuilder
     {
         return $this->createQueryBuilder('a')
-        ->where('a.year = 1986') ;
+        ->where('a.year >= 1986') ;
     }
 
     // /**
